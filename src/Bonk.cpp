@@ -4,8 +4,7 @@
 #include "PauseState.h"
 #include "State.hpp"
 
-Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()), score(0)
-{
+Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()){
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
 	state->start(*this);

@@ -20,24 +20,16 @@ namespace Bonk {
 		Bonk(Display& Display);
 
 		void draw() override;
-
 		void start() override;
-
 		void update(uint _time) override;
-
 		void stop() override;
 
 		void newGame();
-
 		void pauseGame();
-
 		void gameOver();
-
 		void resumeGame();
-
 		void quitGame();
 
-		uint score;
 	private:
 		State* state;
 		State* pausedGameState;
