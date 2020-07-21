@@ -19,5 +19,5 @@ const GameInfo BonkInfo {
 		"Bonk",
 		"Bonk! the ball back and forth.",
 		spacerocks_icon,
-		[](Display& display) -> Context* { return new Bonk(display); }
+		[](Display& display) -> Context* { return new Bonk::Bonk(display); }
 };

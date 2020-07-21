@@ -5,8 +5,8 @@
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
-GameState* GameState::instance = nullptr;
-GameState::GameState(Sprite* sprite) : State(sprite)
+Bonk::GameState* Bonk::GameState::instance = nullptr;
+Bonk::GameState::GameState(Sprite* sprite) : State(sprite)
 {
 	instance = this;
 
@@ -34,7 +34,7 @@ GameState::GameState(Sprite* sprite) : State(sprite)
 	winCondition = 0;
 	deathTimer = 0;
 }
-void GameState::start(Bonk& _game)
+void Bonk::GameState::start(Bonk& _game)
 {
 	game = &_game;
 	Input::getInstance()->setButtonHeldRepeatCallback(BTN_UP, 1, [](uint){
@@ -47,13 +47,13 @@ void GameState::start(Bonk& _game)
 		instance->game->pauseGame();
 	});
 }
-GameState::~GameState()
+Bonk::GameState::~GameState()
 {
 	Input::getInstance()->setButtonHeldRepeatCallback(BTN_UP, 0, nullptr);
 	Input::getInstance()->setButtonHeldRepeatCallback(BTN_DOWN, 0, nullptr);
 	Input::getInstance()->removeBtnPressCallback(BTN_B);
 }
-void GameState::draw()
+void Bonk::GameState::draw()
 {
 	display->setTextSize(5);
 	display->setTextFont(1);
@@ -103,7 +103,7 @@ void GameState::draw()
 	//draw the oponent
 	display->fillRect(opponentX, opponentY, opponentWidth, opponentHeight, TFT_BLUE);
 }
-void GameState::update(uint _time, Bonk& game)
+void Bonk::GameState::update(uint _time, Bonk& game)
 {
 	//reset score when 10 is reached
 	if ((playerScore == 10) || (opponentScore == 10)) {
@@ -165,7 +165,7 @@ void GameState::update(uint _time, Bonk& game)
 		tone(BUZZ_PIN, 350, 50);
 	}
 }
-bool GameState::rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
+bool Bonk::GameState::rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
 	if (x1 + w1 >= x2 && x1 <= x2 + w2 &&
 		y1 + h1 >= y2 && y1 <= y2 + h2)
 	{
