@@ -12,12 +12,12 @@ struct GameInfo {
 
 #include <Arduino.h>
 #include <Display/Display.h>
-#include "src/bitmaps/spacerocks_icon.hpp"
-#include "src/SpaceRocks.h"
+#include "src/bitmaps/bonk_icon.hpp"
+#include "src/Bonk.h"
 
-const GameInfo SpaceRocksInfo {
-		"SpaceRocks",
-		"Shoot the asteroids to survive!",
+const GameInfo BonkInfo {
+		"Bonk",
+		"Bonk! the ball back and forth.",
 		spacerocks_icon,
-		[](Display& display) -> Context* { return new SpaceRocks(display); }
+		[](Display& display) -> Context* { return new Bonk(display); }
 };
