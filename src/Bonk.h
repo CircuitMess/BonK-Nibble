@@ -35,6 +35,4 @@ private:
 	Sprite *canvas;
 };
 
-
-
 #endif

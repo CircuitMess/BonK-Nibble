@@ -1,7 +1,7 @@
 #include "Bonk.h"
 #include "TitleState.h"
-// #include "GameState.h"
-// #include "PauseState.h"
+#include "GameState.h"
+#include "PauseState.h"
 
 Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()), score(0)
 {
@@ -31,20 +31,14 @@ void Bonk::stop()
 void Bonk::newGame()
 {
 	delete state;
-	// state = new GameState(canvas);
-	state->start(*this);
-}
-void Bonk::gameOver()
-{
-	delete state;
-	// state = new GameOverState(canvas);
+	state = new GameState(canvas);
 	state->start(*this);
 }
 void Bonk::pauseGame()
 {
 	state->stop();
 	pausedGameState = state;
-	// state = new PauseState(canvas);
+	state = new PauseState(canvas);
 	state->start(*this);
 }
 void Bonk::resumeGame()

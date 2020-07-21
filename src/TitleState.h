@@ -12,8 +12,6 @@ public:
 	void draw() override;
 	void start(Bonk& game) override;
 
-	void drawBitmap(int16_t x, int16_t y, const byte *bitmap, uint16_t color, uint8_t scale);
-
 private:
 	static const char *titleMenu[3] PROGMEM;
 	uint8_t titleCursor;
