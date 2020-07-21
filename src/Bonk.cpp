@@ -1,9 +1,10 @@
 #include "Bonk.h"
+#include "State.hpp"
 #include "TitleState.h"
 #include "GameState.h"
 #include "PauseState.h"
 
-Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()), score(0)
+Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite())
 {
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);

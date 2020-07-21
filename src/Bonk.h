@@ -11,7 +11,8 @@
 #include "../Nibble.hpp"
 #include <UI/Image.h>
 #include <Display/Sprite.h>
-#include "State.hpp"
+
+class State;
 
 class Bonk : public Context, public UpdateListener
 {
@@ -27,7 +28,6 @@ public:
 	void gameOver();
 	void resumeGame();
 	void quitGame();
-	uint score;
 private:
 	State *state;
 	State *pausedGameState;
