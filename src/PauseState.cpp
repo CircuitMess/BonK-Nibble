@@ -4,12 +4,12 @@
 #include "bitmaps/bonk_title.hpp"
 
 
-PauseState* PauseState::instance = nullptr;
-PauseState::PauseState(Sprite* sprite) : State(sprite)
+Bonk::PauseState* Bonk::PauseState::instance = nullptr;
+Bonk::PauseState::PauseState(Sprite* sprite) : State(sprite)
 {
 	instance = this;
 }
-void PauseState::start(Bonk& _game)
+void Bonk::PauseState::start(Bonk& _game)
 {
 	game = &_game;
 	Input::getInstance()->setBtnPressCallback(BTN_A, [](){
@@ -19,12 +19,12 @@ void PauseState::start(Bonk& _game)
 		instance->game->quitGame();
 	});
 }
-PauseState::~PauseState()
+Bonk::PauseState::~PauseState()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	Input::getInstance()->removeBtnPressCallback(BTN_B);
 }
-void PauseState::draw()
+void Bonk::PauseState::draw()
 {
 	display->setTextFont(1);
 	display->setTextSize(2);
@@ -38,6 +38,6 @@ void PauseState::draw()
 	display->setTextSize(1);
 	display->printCenter("A: resume    B: quit");
 }
-void PauseState::update(uint _time, Bonk& game)
+void Bonk::PauseState::update(uint _time, Bonk& game)
 {
 }

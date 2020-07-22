@@ -4,14 +4,14 @@
 #include "bitmaps/bonk_title.hpp"
 
 
-TitleState* TitleState::instance = nullptr;
-TitleState::TitleState(Sprite* sprite) : State(sprite)
+Bonk::TitleState* Bonk::TitleState::instance = nullptr;
+Bonk::TitleState::TitleState(Sprite* sprite) : State(sprite)
 {
 	instance = this;
 	titleCursor = 0;
 	blinkState = 0;
 }
-void TitleState::start(Bonk& _game)
+void Bonk::TitleState::start(Bonk& _game)
 {
 	game = &_game;
 	Input::getInstance()->setBtnPressCallback(BTN_A, [](){
@@ -39,13 +39,13 @@ void TitleState::start(Bonk& _game)
 		}
 	});
 }
-TitleState::~TitleState()
+Bonk::TitleState::~TitleState()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	Input::getInstance()->removeBtnPressCallback(BTN_UP);
 	Input::getInstance()->removeBtnPressCallback(BTN_DOWN);
 }
-void TitleState::draw()
+void Bonk::TitleState::draw()
 {
 	display->clear(TFT_BLACK);
 	// drawBitmap(30, 14, bonk_title, TFT_WHITE, 2);
@@ -61,7 +61,7 @@ void TitleState::draw()
 	display->drawRect(14, 74 + titleCursor * 24, 100, 22, blinkState ? TFT_RED : TFT_BLACK);
 	display->drawRect(15, 75 + titleCursor * 24, 98, 20, blinkState ? TFT_RED : TFT_BLACK);
 }
-void TitleState::update(uint _time, Bonk& game)
+void Bonk::TitleState::update(uint _time, Bonk& game)
 {
 	blinkMicros+=_time;
 	if(blinkMicros > 200000)

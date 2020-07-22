@@ -3,22 +3,22 @@
 
 #include "State.hpp"
 
-class TitleState : public State
-{
-public:
-	TitleState(Sprite* sprite);
-	~TitleState();
-	void update(uint _time, Bonk& game) override;
-	void draw() override;
-	void start(Bonk& game) override;
+namespace Bonk {
+	class TitleState : public State {
+	public:
+		TitleState(Sprite* sprite);
+		~TitleState();
+		void update(uint _time, Bonk& game) override;
+		void draw() override;
+		void start(Bonk& game) override;
 
-private:
-	static const char *titleMenu[3] PROGMEM;
-	uint8_t titleCursor;
-	bool blinkState;
-	uint blinkMicros;
-	static TitleState* instance;
+	private:
+		static const char* titleMenu[3] PROGMEM;
+		uint8_t titleCursor;
+		bool blinkState;
+		uint blinkMicros;
+		static TitleState* instance;
+	};
 };
-
 
 #endif

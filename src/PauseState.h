@@ -3,18 +3,18 @@
 
 #include "State.hpp"
 
-class PauseState : public State
-{
-public:
-	PauseState(Sprite* sprite);
-	~PauseState();
-	void update(uint _time, Bonk& game) override;
-	void draw() override;
-	void start(Bonk& game) override;
+namespace Bonk {
+	class PauseState : public State {
+	public:
+		PauseState(Sprite* sprite);
+		~PauseState();
+		void update(uint _time, Bonk& game) override;
+		void draw() override;
+		void start(Bonk& game) override;
 
-private:
-	static PauseState* instance;
+	private:
+		static PauseState* instance;
+	};
 };
-
 
 #endif
