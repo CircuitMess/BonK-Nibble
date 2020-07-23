@@ -18,6 +18,6 @@ struct GameInfo {
 const GameInfo BonkInfo {
 		"Bonk",
 		"Bonk! the ball back and forth.",
-		spacerocks_icon,
+		bonk_icon,
 		[](Display& display) -> Context* { return new Bonk::Bonk(display); }
 };
