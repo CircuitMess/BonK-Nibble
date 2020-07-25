@@ -7,12 +7,10 @@ namespace Bonk {
 	class GameState : public State {
 	public:
 		GameState(Sprite* sprite);
-		~GameState();
-
 		void update(uint _time, Bonk& game) override;
 		void draw() override;
 		void start(Bonk& game) override;
-
+		void stop() override;
 		bool rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2);
 
 	private:

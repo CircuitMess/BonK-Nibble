@@ -47,7 +47,7 @@ void Bonk::GameState::start(Bonk& _game)
 		instance->game->pauseGame();
 	});
 }
-Bonk::GameState::~GameState()
+void Bonk::GameState::stop()
 {
 	Input::getInstance()->setButtonHeldRepeatCallback(BTN_UP, 0, nullptr);
 	Input::getInstance()->setButtonHeldRepeatCallback(BTN_DOWN, 0, nullptr);
@@ -82,16 +82,6 @@ void Bonk::GameState::draw()
 		return;
 	}
 
-	//move the oponent
-	if ((opponentY + (opponentHeight / 2)) < (ballY + (ballSize / 2))) { //if the ball is below the oponent
-		opponentY = opponentY + opponentSpeedY; //move down
-		opponentY = min(display->height() - opponentHeight, opponentY); //don't go out of the screen
-	}
-	else {
-		opponentY = opponentY - opponentSpeedY; //move up
-		opponentY = max(0, opponentY); //don't go out of the screen
-	}
-
 	//draw the score
 	display->setTextSize(3);
 	display->setCursor(15, 32);
@@ -114,6 +104,17 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		deathTimer+=_time;
 		return;
 	}
+
+	//move the oponent
+	if ((opponentY + (opponentHeight / 2)) < (ballY + (ballSize / 2))) { //if the ball is below the oponent
+		opponentY = opponentY + opponentSpeedY; //move down
+		opponentY = min(display->height() - opponentHeight, opponentY); //don't go out of the screen
+	}
+	else {
+		opponentY = opponentY - opponentSpeedY; //move up
+		opponentY = max(0, opponentY); //don't go out of the screen
+	}
+
 
 	//move the ball
 	ballX = ballX + ballSpeedX;

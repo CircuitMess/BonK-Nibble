@@ -39,7 +39,7 @@ void Bonk::TitleState::start(Bonk& _game)
 		}
 	});
 }
-Bonk::TitleState::~TitleState()
+void Bonk::TitleState::stop()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	Input::getInstance()->removeBtnPressCallback(BTN_UP);

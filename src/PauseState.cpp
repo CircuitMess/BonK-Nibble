@@ -19,7 +19,7 @@ void Bonk::PauseState::start(Bonk& _game)
 		instance->game->quitGame();
 	});
 }
-Bonk::PauseState::~PauseState()
+void Bonk::PauseState::stop()
 {
 	Input::getInstance()->removeBtnPressCallback(BTN_A);
 	Input::getInstance()->removeBtnPressCallback(BTN_B);

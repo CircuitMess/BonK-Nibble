@@ -1,2 +1,2 @@
 #include "State.hpp"
-Bonk::State::~State(){}
+Bonk::State::~State(){stop();}

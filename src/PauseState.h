@@ -7,10 +7,10 @@ namespace Bonk {
 	class PauseState : public State {
 	public:
 		PauseState(Sprite* sprite);
-		~PauseState();
 		void update(uint _time, Bonk& game) override;
 		void draw() override;
 		void start(Bonk& game) override;
+		void stop() override;
 
 	private:
 		static PauseState* instance;

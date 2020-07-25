@@ -28,6 +28,9 @@ void Bonk::Bonk::start()
 void Bonk::Bonk::stop()
 {
 	UpdateManager::removeListener(this);
+}
+void Bonk::Bonk::pack()
+{
 	delete state;
 }
 void Bonk::Bonk::newGame()
