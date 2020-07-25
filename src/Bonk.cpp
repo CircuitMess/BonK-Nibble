@@ -8,7 +8,6 @@
 Bonk::Bonk::Bonk(Display& display) : Context(display), display(&display), canvas(display.getBaseSprite()){
 	randomSeed(micros()*millis());
 	state = new TitleState(canvas);
-	state->start(*this);
 }
 
 void Bonk::Bonk::draw()
@@ -23,10 +22,12 @@ void Bonk::Bonk::update(uint _time)
 }
 void Bonk::Bonk::start()
 {
+	state->start(*this);
 	UpdateManager::addListener(this);
 }
 void Bonk::Bonk::stop()
 {
+	UpdateManager::removeListener(this);
 	delete state;
 }
 void Bonk::Bonk::newGame()
