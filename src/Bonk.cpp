@@ -31,10 +31,12 @@ void Bonk::Bonk::stop()
 }
 void Bonk::Bonk::pack()
 {
+	state->stop();
 	delete state;
 }
 void Bonk::Bonk::newGame()
 {
+	state->stop();
 	delete state;
 	state = new GameState(canvas);
 	state->start(*this);
@@ -48,12 +50,14 @@ void Bonk::Bonk::pauseGame()
 }
 void Bonk::Bonk::resumeGame()
 {
+	state->stop();
 	delete state;
 	state = pausedGameState;
 	state->start(*this);
 }
 void Bonk::Bonk::quitGame()
 {
+	state->stop();
 	delete state;
 	state = new TitleState(canvas);
 	state->start(*this);
