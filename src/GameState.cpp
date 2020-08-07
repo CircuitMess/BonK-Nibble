@@ -2,6 +2,8 @@
 #include <Input/Input.h>
 #include "Bonk.h"
 #include "bitmaps/bonk_title.hpp"
+#include <Audio/Piezo.h>
+
 #define min(a,b) ((a)<(b)?(a):(b))
 #define max(a,b) ((a)>(b)?(a):(b))
 
@@ -125,27 +127,27 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 	if (ballY < 0) {
 		ballY = 0;
 		ballSpeedY = -ballSpeedY;
-		tone(BUZZ_PIN, 50, 50);
+		Piezo.tone(50, 50);
 	}
 	//collision with the bottom border
 	if ((ballY + ballSize) > display->height()) {
 		ballY = display->height() - ballSize;
 		ballSpeedY = -ballSpeedY;
-		tone(BUZZ_PIN, 50, 50);
+		Piezo.tone(50, 50);
 
 	}
 	//collision with the player
 	if (rectRect(ballX, ballY, ballSize, ballSize, playerX, playerY, playerWidth, playerHeight)) {
 		ballX = playerX + playerWidth;
 		ballSpeedX = -ballSpeedX;
-		tone(BUZZ_PIN, 100, 50);
+		Piezo.tone(100, 50);
 
 	}
 	//collision with the oponent
 	if (rectRect(ballX, ballY, ballSize, ballSize, opponentX, opponentY, opponentWidth, opponentHeight)) {
 		ballX = opponentX - ballSize;
 		ballSpeedX = -ballSpeedX;
-		tone(BUZZ_PIN, 150, 50);
+		Piezo.tone(150, 50);
 	}
 	//collision with the left side
 	if (ballX < 0) {
@@ -154,7 +156,7 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		ballX = display->width() - ballSize - opponentWidth - 1;
 		ballSpeedX = -abs(ballSpeedX);
 		ballY = random(0, display->height() - ballSize);
-		tone(BUZZ_PIN, 350, 50);
+		Piezo.tone(350, 50);
 	}
 	//collision with the right side
 	if ((ballX + ballSize) > display->width()) {
@@ -163,7 +165,7 @@ void Bonk::GameState::update(uint _time, Bonk& game)
 		ballX = display->width() - ballSize - opponentWidth - 16; //place the ball on the oponent side
 		ballSpeedX = -abs(ballSpeedX);
 		ballY = random(0, display->height() - ballSize);
-		tone(BUZZ_PIN, 350, 50);
+		Piezo.tone(350, 50);
 	}
 }
 bool Bonk::GameState::rectRect(float x1, float y1, float w1, float h1, float x2, float y2, float w2, float h2) {
