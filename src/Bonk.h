@@ -12,6 +12,8 @@
 #include <UI/Image.h>
 #include <Display/Sprite.h>
 
+extern Context* runningContext;
+
 namespace Bonk {
 	class State;
 	

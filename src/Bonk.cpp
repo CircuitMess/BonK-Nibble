@@ -22,6 +22,7 @@ void Bonk::Bonk::update(uint _time)
 }
 void Bonk::Bonk::start()
 {
+	runningContext = this;
 	state->start(*this);
 	UpdateManager::addListener(this);
 }
