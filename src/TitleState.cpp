@@ -2,7 +2,7 @@
 #include <Input/Input.h>
 #include "Bonk.h"
 #include "bitmaps/bonk_title.hpp"
-
+#include <Audio/Piezo.h>
 
 Bonk::TitleState* Bonk::TitleState::instance = nullptr;
 Bonk::TitleState::TitleState(Sprite* sprite) : State(sprite)
@@ -31,11 +31,13 @@ void Bonk::TitleState::start(Bonk& _game)
 	Input::getInstance()->setBtnPressCallback(BTN_UP, [](){
 		if(instance->titleCursor > 0){
 			instance->titleCursor--;
+			Piezo.tone(200, 50);
 		}
 	});
 	Input::getInstance()->setBtnPressCallback(BTN_DOWN, [](){
 		if(instance->titleCursor < 1){
 			instance->titleCursor++;
+			Piezo.tone(200, 50);
 		}
 	});
 }
