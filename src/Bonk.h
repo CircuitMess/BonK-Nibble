@@ -35,7 +35,7 @@ namespace Bonk {
 
 	private:
 		State* state;
-		State* pausedGameState;
+		State* pausedGameState = nullptr;
 		Display* display;
 		Sprite* canvas;
 	};

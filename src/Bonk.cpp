@@ -34,6 +34,11 @@ void Bonk::Bonk::pack()
 {
 	state->stop();
 	delete state;
+
+	if(pausedGameState != nullptr){
+		pausedGameState->stop();
+		delete pausedGameState;
+	}
 }
 void Bonk::Bonk::newGame()
 {
@@ -54,10 +59,14 @@ void Bonk::Bonk::resumeGame()
 	state->stop();
 	delete state;
 	state = pausedGameState;
+	pausedGameState = nullptr;
 	state->start(*this);
 }
 void Bonk::Bonk::quitGame()
 {
+	delete pausedGameState;
+	pausedGameState = nullptr;
+
 	state->stop();
 	delete state;
 	state = new TitleState(canvas);
