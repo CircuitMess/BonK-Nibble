@@ -39,6 +39,8 @@ void Bonk::Bonk::pack()
 		pausedGameState->stop();
 		delete pausedGameState;
 	}
+
+	exitingGame = true;
 }
 void Bonk::Bonk::newGame()
 {

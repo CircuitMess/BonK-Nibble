@@ -13,6 +13,7 @@
 #include <Display/Sprite.h>
 
 extern Context* runningContext;
+extern bool exitingGame;
 
 namespace Bonk {
 	class State;
