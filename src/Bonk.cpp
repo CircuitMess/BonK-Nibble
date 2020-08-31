@@ -14,7 +14,7 @@ void Bonk::Bonk::draw()
 {
 	state->draw();
 }
-void Bonk::Bonk::update(uint _time)
+void Bonk::Bonk::loop(uint _time)
 {
 	state->update(_time, *this);
 	draw();
@@ -24,11 +24,11 @@ void Bonk::Bonk::start()
 {
 	runningContext = this;
 	state->start(*this);
-	UpdateManager::addListener(this);
+	LoopManager::addListener(this);
 }
 void Bonk::Bonk::stop()
 {
-	UpdateManager::removeListener(this);
+	LoopManager::removeListener(this);
 }
 void Bonk::Bonk::pack()
 {

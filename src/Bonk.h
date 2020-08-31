@@ -4,7 +4,7 @@
 #include <Arduino.h>
 #include <CircuitOS.h>
 #include <Input/Input.h>
-#include <Update/UpdateManager.h>
+#include <Loop/LoopManager.h>
 #include <gpio.h>
 #include <avr/pgmspace.h>
 #include <Support/Context.h>
@@ -18,13 +18,13 @@ extern bool exitingGame;
 namespace Bonk {
 	class State;
 	
-	class Bonk : public Context, public UpdateListener {
+	class Bonk : public Context, public LoopListener {
 	public:
 		Bonk(Display& Display);
 
 		void draw() override;
 		void start() override;
-		void update(uint _time) override;
+		void loop(uint _time) override;
 		void stop() override;
 		void pack() override;
 		
